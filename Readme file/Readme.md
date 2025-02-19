@@ -50,7 +50,7 @@ frontend. Django will serve as the backend framework, managing the data and hand
 
 List your team members along with their roles.
 
-- HEAMANTHRAJ S   - Team Leader
+- HEAMANTHRAJ S   - BACKEND DEVELOPER (Team Leader)
 - SUDHARSAN S     - FRONTEND DEVELOPER
 - KUMARAVEL T     - FRONTEND DEVELOPER
 - NAVINKUMAR M    - BACKEND DEVELOPER
