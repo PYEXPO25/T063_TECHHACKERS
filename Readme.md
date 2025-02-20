@@ -67,7 +67,7 @@ List your team members along with their roles.
 
 List the technologies and tools used in the project. For example:
 
-- *Frontend:* HTML, CSS, JavaScript, ReactJS
+- *Frontend:* HTML, CSS, JavaScript
 - *Backend:*  Django
 - *Database:* SQL
 - *Other Tools:* Git
