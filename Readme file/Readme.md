@@ -58,7 +58,8 @@ List your team members along with their roles.
 - ARAVINTHKUMAR P - FRONTEND DEVELOPER
 - SABARINATHAN V  - BACKEND DEVELOPER
 
-![Team Photo](media/TEAM_PHOTO.jpg)
+![TEAM_PHOTO](https://github.com/user-attachments/assets/bcaa3340-94b7-4725-b6f8-8c2509b37831)
+
 
 
 -------------------------------------------------------------------------------------------------------------------------------------
