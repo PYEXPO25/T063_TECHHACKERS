@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information & Complaint Form</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            background: url("https://www.pixground.com/wp-content/uploads/2023/02/Mountain-Lake-Reflection-in-Nature-Scenery-4K-Wallpaper.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+        /* Glass Effect */
+        .glass {
+            position: relative;
+            margin: 50px auto;
+            padding: 40px;
+            max-width: 920px;
+            background: rgba(255, 255, 255, 0.952);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(244, 237, 237, 0.74);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: white;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+        /* Input and Textarea placeholder color */
+        input::placeholder,
+        textarea::placeholder {
+            color: black; /* Make placeholder text black */
+            font-style: italic;
+        }
+
+        /* Smooth Focus Animation */
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 128, 255, 0.7); /* Add glow effect on focus */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        /* Form Box */
+        .form-box {
+            background: rgb(255, 254, 254);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 90%;
+            margin-bottom: 30px;
+            animation: slideUp 1s ease-out;
+        }
+        h2 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 24px;
+            animation: fadeInText 1.5s ease-out;
+        }
+        /* Form Group Container */
+        .form-group-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        /* Form Group */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: calc(45% - 10px);
+            margin-bottom: 15px;
+        }
+        .form-group2 {
+            display: flex;
+            flex-direction: column;
+            width: calc(90% - 10px);
+            margin-bottom: 15px;
+        }
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .co {
+        display: block;  /* Ensure it is visible */
+        margin-top: 5px;
+        font-size: 12px;
+        color: #666;
+    }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            width: 50%;
+            margin-top: 20px;
+        }
+        #charCount {
+        display: block;
+        margin-top: 5px;
+        font-size: 14px;
+        color: black;
+    }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 30%;
+            transition: all 0.3s ease;
+
+        }
+        #locationButton {
+            padding: 5px 10px;  /* Reduce padding for a smaller button */
+            font-size: 14px;     /* Decrease font size */
+            width: auto;         /* Set width to auto to fit content */
+            max-width: 150px;    /* Limit max width */
+            text-align: center;  /* Keep text centered */
+            display: inline-block; 
+            margin: 5px 0;       
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+        .clear-btn {
+            background-color: #dc3545;
+        }
+        .clear-btn:hover {
+            background-color: #c82333;
+        }
+        @media (max-width: 600px) {
+            .button-group {
+                width: 100%;
+            }
+        }
+        .button-group {
+                width: 100%;
+            }
+
+            /* Make the form scrollable if it overflows */
+            .glass {
+                padding: 20px;
+                max-height: 100vh;
+                overflow-y: auto;
+            }
+        
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+        <div class="glass">
+            <div class="container">
+                <form id="complaintForm">
+                    <div class="form-box">
+                        <h2>Personal Information</h2>
+                        <div class="form-group-container">
+                            <div class="form-group">
+                                <label for="fullName">Full Name:</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number:</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender:</label>
+                                <select id="gender" name="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address:</label>
+                                <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="glass">
+            <div class="container">
+                <form id="complaintForm">
+                    <div class="form-box">
+                        <h2>Complaint Details</h2>
+                        <div class="form-group2">
+                           <br><br> <label for="complaintCategory">Complaint Category:</label>
+                            <select id="complaintCategory" name="complaintCategory">
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="water">Water Issue</option>
+                                <option value="electric">Electric Issue</option>
+                                <option value="garbage">Garbage</option>
+                                <option value="toilet">Toilet Maintenance</option>
+                                <option value="lake">Lake-Work</option>
+                                <option value="park">Park Maintenance</option>
+                                <option value="road">Speed Breaker</option>
+                                <option value="drainage">Drainage</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group2">
+                            <label for="complaintDescription">Complaint Description:</label>
+                            <textarea id="complaintDescription" name="complaintDescription" rows="4" 
+                                placeholder="Describe your complaint here" required maxlength="2000"></textarea>
+                            <small id="charCount">0/2000 characters</small> <!-- Make sure it's right after textarea -->
+                        </div>
+                                             
+                        <div class="locationButton">
+                            <label for="location">Your Location:</label>
+                            <button id="locationButton" type="button" onclick="getLocation()">Add Location</button>
+                            <input type="text" id="location" name="location" placeholder="Location will be displayed here" readonly>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="glass">
+        <div class="container">
+            
+                <div class="form-box">
+                    <h2>Upload Attachments</h2>
+                    <div class="form-group">
+                        <label for="attachment">Attach Photo/Video:</label>
+                        <input type="file" id="attachment" name="attachment" accept="image/,video/">
+                        <small id="fileInfo">Max size: 10MB</small>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button type="submit">Submit</button>
+                    <button type="button" class="clear-btn" onclick="clearForm()">Clear</button>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+    <script>
+    
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                document.getElementById("location").value = `Lat: ${position.coords.latitude}, Lng: ${position.coords.longitude}`;
+            }, function (error) {
+                alert("Error getting location: " + error.message);
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    const charLimit = 2000;
+    const complaintDescription = document.getElementById('complaintDescription');
+    const charCountDisplay = document.getElementById('charCount');
+
+    complaintDescription.addEventListener('input', function () {
+        const charCount = this.value.length;
+
+        // Update the character count display
+        charCountDisplay.textContent = `${charCount}/${charLimit} characters`;
+
+        // Prevent input from exceeding character limit
+        if (charCount > charLimit) {
+            this.value = this.value.substring(0, charLimit);
+            charCountDisplay.textContent =` ${charLimit}/${charLimit} characters`;
+        }
+    });
+
+
+    document.getElementById('attachment').addEventListener('change', function () {
+        const file = this.files[0];
+        const fileInfo = document.getElementById('fileInfo');
+
+        if (file) {
+            const allowedTypes = ["image/jpeg", "image/png", "video/mp4", "video/quicktime"];
+            const maxSize = 10 * 1024 * 1024;
+
+            if (!allowedTypes.includes(file.type)) {
+                alert("Invalid file type! Upload JPG, PNG, MP4, or MOV.");
+                this.value = "";
+                fileInfo.textContent = "Max size: 10MB";
+                return;
+            }
+
+            if (file.size > maxSize) {
+                alert("File too large! Select a file under 10MB.");
+                this.value = "";
+                fileInfo.textContent = "Max size: 10MB";
+                return;
+            }
+
+            fileInfo.textContent =` Selected:${file.name}`;
+        } else {
+            fileInfo.textContent = "Max size: 10MB";
+        }
+    });
+
+    function clearForm() {
+        document.getElementById("complaintForm").reset();
+        document.getElementById('fileInfo').textContent = "Max size: 10MB";
+        document.getElementById('charCount').textContent = "0/2000 characters";
+    }
+</script>
+
+    </script>
+</body>
+</html>
