@@ -31,7 +31,7 @@
             border-radius: 10px;
             padding: 20px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(225, 24, 24, 0.3);
             text-align: center;
             width: 300px;
             animation: fadeIn 1s ease-in-out;
@@ -78,11 +78,20 @@
 </head>
 <body>
     <div class="container">
-        <form class="glass-form" onsubmit="return validateForm()">
+        <form class="glass-form" onsubmit="return validateForm()" method = "post">
+            {% csrf_token %}
             <h2>Sign In</h2>
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <div class="input-group">
                 <input type="text" id="username" placeholder="Username" required>
             </div>
+            
             <div class="input-group">
                 <input type="password" id="password" placeholder="Password" required>
                 <span class="toggle-password" onclick="togglePasswordVisibility()">👁</span>

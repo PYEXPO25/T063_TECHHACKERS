@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Form</title>
+    
+    <style>
+            /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        background: url("https://www.pixground.com/wp-content/uploads/2023/02/Mountain-Lake-Reflection-in-Nature-Scenery-4K-Wallpaper.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        width: 100%;
+    }
+    
+    .nav-links {
+list-style: none;
+display: flex;
+gap: 20px;
+}
+
+.nav-links a {
+text-decoration: none;
+color: white;
+font-size: 1.2em;
+transition: 0.3s;
+}
+
+.nav-links a:hover {
+color: cyan;
+}
+.logout-btn {
+background-color: #dc3545;
+color: white;
+border: none;
+padding: 10px;  /* Smaller padding */
+font-size: 14px;  /* Reduce font size */
+border-radius: 15px;
+cursor: pointer;
+transition: 0.3s ease;
+width: 65px;
+}
+
+.logout-btn:hover {
+background-color: #c82333;
+}
+
+    /* Glass Effect */
+    .glass {
+        position: relative;
+        margin: 10px auto;
+        padding: 0px;
+        max-width: 700px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 30px;
+        backdrop-filter: blur(10px);
+        border: 3px solid rgba(0, 255, 247, 0.7); /* Updated border */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        text-align: center;
+        animation: fadeIn 1s ease-out;
+    }
+    
+    
+     
+    /* Input and Textarea placeholder color */
+    input::placeholder,
+    textarea::placeholder {
+        color: black; /* Make placeholder text black */
+        font-style: italic;
+    }
+
+    /* Smooth Focus Animation */
+    input:focus, select:focus, textarea:focus {
+        outline: none;
+        box-shadow: 0 0 8px rgba(71, 103, 135, 0.7); /* Add glow effect on focus */
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    /* Form Box */
+    .form-box {
+        background: rgb(255, 254, 254);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        max-width: 800px;
+        width: 90%;
+        margin-bottom: 40px;
+        animation: slideUp 1s ease-out;
+    }
+    h2 {
+        margin-bottom: 10px;
+        color: #333;
+        font-size: 24px;
+        animation: fadeInText 1.5s ease-out;
+    }
+    /* Form Group Container */
+    .form-group-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 600px;
+    }
+
+    /* Form Group */
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        width: calc(45%-10px);
+        margin-bottom: 30px;
+    }
+    .form-group2 {
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+        margin-bottom: 40px;
+    }
+    label {
+        font-size: 14px;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .co {
+    display: block;  /* Ensure it is visible */
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        width: 50%;
+        margin-top: 20px;
+    }
+    #charCount {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: black;
+}
+
+    button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+        width: 30%;
+        transition: all 0.3s ease;
+
+    }
+    #locationButton {
+        padding: 5px 10px;  /* Reduce padding for a smaller button */
+        font-size: 14px;     /* Decrease font size */
+        width: auto;         /* Set width to auto to fit content */
+        max-width: 150px;    /* Limit max width */
+        text-align: center;  /* Keep text centered */
+        display: inline-block; 
+        margin: 5px 0;       
+    }
+    
+    /* Fully transparent chatbot icon */
+    .chatbot-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0); /* Fully transparent */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .chatbot-icon img {
+        width: 80px;
+        height: 80px;
+        opacity: 0.8; /* Adjust transparency if needed */
+    }
+
+    button:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+    }
+    .clear-btn {
+        background-color: #dc3545;
+    }
+    .clear-btn:hover {
+        background-color: #c82333;
+    }
+    @media (max-width: 600px) {
+        .button-group {
+            width: 100%;
+        }
+    }
+    .button-group {
+            width: 100%;
+        }
+
+        /* Make the form scrollable if it overflows */
+        .glass {
+            padding: 20px;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+    
+
+    /* Keyframe Animations */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideUp {
+        0% {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeInText {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 1px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f4f4f4;
+    }
+    </style>
+    <script>
+        function openChatbot() {
+            window.open('http://127.0.0.1:8501', '_blank', 'width=400,height=600');
+        }
+            function filterName() {
+    const nameInput = document.getElementById("fullName");
+    nameInput.value = nameInput.value.replace(/[^A-Za-z\s]/g, ""); // Remove numbers & special characters
+}
+
+
+    function validateEmail() {
+    const emailInput = document.getElementById("email");
+    const emailError = document.getElementById("emailError");
+
+    if (!emailInput.value.endsWith("@gmail.com")) {
+        emailError.style.display = "inline";
+        emailInput.style.border = "2px solid red"; 
+    } else {
+        emailError.style.display = "none";
+        emailInput.style.border = "1px solid #ccc"; 
+    }
+}
+
+        function showComplaintDetails() {
+            document.getElementById("personalInfoSection").style.display = "none";
+            document.getElementById("complaintDetailsSection").style.display = "block";
+        }
+        function validatePersonalInfo() {
+    const fullName = document.getElementById("fullName").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const gender = document.getElementById("gender").value;
+    const address = document.getElementById("address").value.trim();
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/; // Gmail format validation
+    const phonePattern = /^\d{10}$/; // Exactly 10 digits
+
+    if (fullName === "") {
+        alert("Please enter your full name.");
+        return;
+    }
+
+    if (!phonePattern.test(phone)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+    }
+
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email ending with @gmail.com.");
+        return;
+    }
+
+    if (gender === "") {
+        alert("Please select your gender.");
+        return;
+    }
+
+    if (address === "") {
+        alert("Please enter your address.");
+        return;
+    }
+
+    // If all conditions are met, proceed to complaint details
+    showComplaintDetails();
+}
+function validateComplaintForm(event) {
+    event.preventDefault(); // Prevent form submission if validation fails
+
+    const complaintCategory = document.getElementById("complaintCategory").value;
+    const complaintDescription = document.getElementById("complaintDescription").value.trim();
+    const location = document.getElementById("location").value.trim();
+    const attachment = document.getElementById("attachment").files[0]; // Get the uploaded file
+
+    // Ensure a category is selected
+    if (!complaintCategory) {
+        alert("Please select a complaint category.");
+        return;
+    }
+
+    // Ensure complaint description is filled
+    if (complaintDescription === "" || complaintDescription.length < 10) {
+        alert("Please provide a valid complaint description (at least 10 characters).");
+        return;
+    }
+
+    // Ensure location is added
+    if (location === "") {
+        alert("Please add your location.");
+        return;
+    }
+
+    // Validate file attachment size (if uploaded)
+    if (attachment) {
+        const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+        if (attachment.size > maxSize) {
+            alert("File size should not exceed 10MB.");
+            return;
+        }
+    }
+
+    // If all conditions are met, allow form submission
+    alert("Complaint submitted successfully!");
+    document.getElementById("complaintForm").submit(); // Submit form
+}
+
+
+
+        function goBackToPersonalInfo() {
+            document.getElementById("complaintDetailsSection").style.display = "none";
+            document.getElementById("personalInfoSection").style.display = "block";
+        }
+
+        function updateCharacterCount() {
+            let textarea = document.getElementById("complaintDescription");
+            let charCount = document.getElementById("charCount");
+            charCount.innerText = `${textarea.value.length}/2000 characters`;
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    document.getElementById("location").value = 
+                        `Lat: ${position.coords.latitude}, Long: ${position.coords.longitude}`;
+                }, function () {
+                    alert("Unable to retrieve your location.");
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header style="display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.7); color: white; padding: 15px 30px; font-size: 22px; font-weight: bold;">
+        <span>Hello User!!!</span>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="aboutus.html">About</a></li>
+            <li><a href="#">Contact</a></li>
+
+        </ul>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+
+       
+    </header>
+    
+    <div class="chatbot-icon" onclick="openChatbot()">
+        <img src="https://png.pngtree.com/png-vector/20220802/ourmid/pngtree-3d-rpa-cute-robot-cartoon-sky-blue-gradients-color-chatbot-png-image_6093532.png" alt="Chatbot">
+    </div>
+
+
+    <!-- Personal Information Section -->
+    <div class="glass" id="personalInfoSection">
+        <div class="container">
+            <form id="personalInfoForm">
+                <div class="form-box">
+                    <h2>Personal Information</h2>
+                    <div class="form-group-container">
+                        <div class="form-group">
+                            <label for="fullName">Full Name:</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required oninput="filterName()">
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="text" id="phone" name="phone" placeholder="Enter your phone number" 
+                                   maxlength="10" pattern="\d{10}" title="Please enter a 10-digit number" required
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <span class="error" id="errorText" style="display: none;">Please enter a valid 10-digit number.</span>       
+                        </div>
+                       
+                        <div class="form-group">
+                            <label for="gender">Gender:</label>
+                            <select id="gender" name="gender">
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required oninput="validateEmail()">
+                            <span class="error" id="emailError" style="display: none; color: red; font-size: 12px;">Please check your email. It must end with @gmail.com</span>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                        </div>
+                    </div>
+
+                    <!-- NEXT Button -->
+                    <div class="button-group">
+                        <button type="button" onclick="validatePersonalInfo()">Next</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Complaint Details Section (Initially Hidden) -->
+    <div class="glass" id="complaintDetailsSection" style="display: none;">
+        <div class="container">
+            <form id="complaintForm">
+                
+                    <h2>Complaint Details</h2>
+                    <div class="form-group">
+                        <label for="complaintCategory">Complaint Category:</label>
+                        <select id="complaintCategory" name="complaintCategory">
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="water">Water Issue</option>
+                            <option value="electric">Electric Issue</option>
+                            <option value="garbage">Garbage</option>
+                            <option value="toilet">Toilet Maintenance</option>
+                            <option value="lake">Lake-Work</option>
+                            <option value="park">Park Maintenance</option>
+                            <option value="road">Speed Breaker</option>
+                            <option value="drainage">Drainage</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div> 
+                        <label for="complaintDescription">Complaint Description:</label>
+                        <textarea id="complaintDescription" name="complaintDescription" rows="4" 
+                            placeholder="Describe your complaint here" required maxlength="2000" 
+                            oninput="updateCharacterCount()"></textarea>
+                        <small id="charCount">0/2000 characters</small>
+                    </div>
+
+                    
+                        <label for="location">Your Location:</label>
+                        <button id="locationButton" type="button" onclick="getLocation()">Add Location</button>
+                        <input type="text" id="location" name="location" placeholder="Location will be displayed here" readonly>
+                    </div>
+                   
+                            
+                                    <div class="form-group">
+                                  <h2>Upload Attachments</h2>
+                                    
+                                        <label for="attachment">Attach Photo/Video:</label>
+                                        <input type="file" id="attachment" name="attachment" placeholder="Add file"  accept="image/,video/">
+                                        <small id="fileInfo">Max size: 10MB</small>
+                                    </div>
+                                         <!-- BACK and SUBMIT Buttons -->
+                                    <div class="button-group">
+                                        <button type="button" onclick="goBackToPersonalInfo()">Back</button>
+                                        <button type="submit" onclick="validateComplaintForm(event)">Submit</button>
+
+                                       
+                                        </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
+                              
+                        </div>
+                    </div>
+
+                   
+    </div>
+
+</body>
+</html>
