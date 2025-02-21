@@ -1,0 +1,194 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: url('https://www.pixground.com/wp-content/uploads/2023/02/Mountain-Lake-Reflection-in-Nature-Scenery-4K-Wallpaper.jpg') no-repeat center center/cover;
+}
+
+.content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* Ensures it takes full screen height */
+    
+    
+}
+#admin-login input {
+    width: 30%; /* Makes input fields full width */
+    padding: 5px;
+    margin: 30px 0;
+    border-radius: 50px;
+    border: 2px solid black;
+    font-size: 1em;
+    height: 40px;
+}
+
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.logo span {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: cyan;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+    font-size: 1em;
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn:hover {
+    background: rgba(0, 255, 255, 0.4);
+    color: black;
+    transform: scale(1.1);
+}
+
+.login-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+
+
+.btn {
+    background: cyan;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #00b3b3;
+}
+
+.link {
+    color: cyan;
+    font-size: 0.9em;
+    margin-top: 10px;
+    display: block;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+
+
+@media (max-width: 700px) {
+    .footerContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        align-items: center;
+    }
+
+    .footerNav ul {
+        flex-direction: column;
+    }
+
+    .footerNav ul li {
+        width: 100%;
+        text-align: center;
+        margin: 3px;
+    }
+
+    .socialIcons a {
+        padding: 4px;
+        margin: 2px;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+* {
+    box-sizing: border-box;
+}
+

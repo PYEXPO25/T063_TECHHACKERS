@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart City Complaint Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}" > <!-- External CSS file -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .content {
+            flex: 1;
+        }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50%; 
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 0 30px;
+        }
+        .footerContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        .socialIcons, .footerNav {
+            display: flex;
+            align-items: center;
+            size: 100%;
+        }
+        .footerNav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .footerNav ul li {
+            margin-left: 15px;
+        }
+        .footerBottom {
+            text-align: center;
+            width: 100%;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="https://www.techniajz.com/admin/ckeditor/ckfinder/userfiles/images/blog_images/State-Emblem-of-Tamil-Nadu-750x470.jpg" alt="Logo">
+            <span>Smart City Complaint<br>Management System</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Our Team</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button class="btn" onclick="toggleAdminLogin()">Admin</button>
+            <button class="btn" onclick="toggleUserLogin()">User</button>
+        </div>
+    </header>
+    
+    <div class="content">
+        <div id="admin-login" class="container" style="display: none;">
+            <form action="#" method="post">
+                <h1>Sign In</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input type="text" placeholder="Enter your username" required>
+                <input type="password" id="password" required>
+                <button type="button" id="togglePassword">👁</button>
+                <button type="submit">Sign In</button>
+                <p><a href="#">Forgot password?</a></p>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footerContainer">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="https://www.techniajz.com/admin/ckeditor/ckfinder/userfiles/images/blog_images/State-Emblem-of-Tamil-Nadu-750x470.jpg?quality=90" alt="Logo">
+                </div>
+                <p class="right-text">Tamilnadu<br>Municipality Corporation.</p>
+            </div>
+            <div class="socialIcons">
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <div class="socialIcons">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy; <span id="year"></span>; Designed by <span class="designer">TECH HACKERS</span></p>
+        </div>
+        <div class="footerNav">
+            <ul>
+                <li><p>This website is a demo versionFor PyExpo at Our Team KGISL College</p></a></li>
+            </ul>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        document.getElementById("togglePassword").addEventListener("click", function() {
+            let passwordField = document.getElementById("password");
+            passwordField.type = passwordField.type === "password" ? "text" : "password";
+        });
+
+        function toggleAdminLogin() {
+            window.location.href = "adminlogin";
+        }
+        
+        function toggleUserLogin() {
+            window.location.href = "userlogin";
+        }
+    </script>
+</body>
+</html>
