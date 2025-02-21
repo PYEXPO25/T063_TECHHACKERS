@@ -1,15 +1,42 @@
 from django.shortcuts import render, redirect
-from .forms import LoginForm, SignUpForm, ComplaintForm, CustomUserCreationForm
+from .forms import  ComplaintForm, CustomUserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
-from .models import User
+from .models import User, Admin
 
+
+def start(request):
+    return render(request, "start.html")
+
+def admin_dashboard(request):
+    return render(request, "admin.html")
 
 def home(request):
     return render(request, "home/home.html")
+
 def adminlogin(request):
+
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        try:
+            # Check if user exists
+            user = Admin.objects.get(username=username)
+
+            # Check if password matches
+            if user.password == password:  
+                messages.success(request, "Login Successful!")
+                return redirect("dashboard")  # Redirects to another page
+            else:
+                messages.error(request, "Invalid password. Try again.")
+
+        except Admin.DoesNotExist:
+            messages.error(request, "User does not exist.")
+
     return render(request,'adminlogin.html')
+
 def userlogin(request):
     if request.method == 'POST':
         action = request.POST.get("action")
@@ -49,5 +76,5 @@ def userlogin(request):
     return render(request, 'userlogin.html')
 
 def complaints_view(request):
-    return render(request, 'coplaintpage.html')
+    return render(request, 'complaint.html')
 
