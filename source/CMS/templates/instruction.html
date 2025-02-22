@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart City Complaint Steps</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://www.pixground.com/wp-content/uploads/2023/02/Mountain-Lake-Reflection-in-Nature-Scenery-4K-Wallpaper.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            flex-direction: column;
+            
+            padding-top: 180px;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 100px;
+        }
+
+        .navbar button {
+            color: white;
+            background-color: transparent;
+            border: 1px solid white;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            margin: 0 10px;
+        }
+
+        .navbar button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 Columns */
+            gap: 20px;
+            max-width: 1000px;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            width: 500px;
+            height: 200px;
+            text-align: center;
+            transition: 0.3s ease-in-out;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.15);
+        }
+
+        .step:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Step Number Circle */
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+            margin-bottom: 15px;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Different Colors for Steps */
+        .step:nth-child(1) .step-number { background: red; }
+        .step:nth-child(2) .step-number { background: orange; }
+        .step:nth-child(3) .step-number { background: green; }
+        .step:nth-child(4) .step-number { background: blue; }
+        .step:nth-child(5) .step-number { background: purple; }
+
+        /* Step 5 Centered Below */
+        .last-step {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Responsive: Stack on smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* 1 column for smaller screens */
+            }
+            .step {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <button onclick="changeLanguage('english')">English</button>
+        <button onclick="changeLanguage('tamil')">தமிழ்</button>
+    </div>
+
+    <div class="container">
+        <div class="step" id="step1">
+            <div class="step-number">01</div>
+            <div>
+                <strong id="step1Title">🔑 LOGIN PAGE</strong>
+                <i><p id="step1Content">1) Enter Email & Password<br>2) Click on 'Login'<br>3) If you don’t have an account, click 'Register'<br>🔹 Validation:<br>Only @gmail.com emails are allowed.Password must be<br> at least 8 characters..</p></i>
+            </div>
+        </div>
+
+        <div class="step" id="step2">
+            <div class="step-number">02</div>
+            <div>
+                <strong id="step2Title">📝 PERSONAL INFO</strong>
+                <i><p id="step2Content">1) Enter Full Name<br>2) Provide a valid email<br>3) Enter Phone Number <br>4) Select Gender and Provide Address & City<br>🔹 Validation:<br>Name field only accepts letters.<br>Phone number must be 10 digits.</p></i>
+            </div>
+        </div>
+
+        <div class="step" id="step3">
+            <div class="step-number">03</div>
+            <div>
+                <strong id="step3Title">⚡ FILE COMPLAINT</strong>
+                <i><p id="step3Content">1) Select Complaint Type<br>2) Describe the Issue in Detail<br>3) Upload an Image/Video (if needed)<br>🔹 Features:<br>Live Character Count (Max: 2000 characters)<br>Image/Video Upload Preview</p></i>
+            </div>
+        </div>
+
+        <div class="step" id="step4">
+            <div class="step-number">04</div>
+            <div>
+                <strong id="step4Title">📍 TRACK COMPLAINT</strong>
+                <i><p id="step4Content">1) Enter Complaint ID<br>2) Click 'Track Status'<br>3) View Real-Time Updates.<br>🔹 Validation<br>Once a complaint is submitted, users can track its progress.</p></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="last-step" id="step5">
+        <div class="step">
+            <div class="step-number">05</div>
+            <div>
+                <strong id="step5Title">🎯 FEEDBACK</strong>
+                <i><p id="step5Content">1) Receive a resolution update<br>2) Rate the response (1-5 stars)<br>3) Provide additional comments<br>4) Submit Feedback</p></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const content = {
+            english: {
+                step1Title: "🔑 LOGIN PAGE",
+                step1Content: "1) Enter Email & Password<br>2) Click on 'Login'<br>3) If you don’t have an account, click 'Register'<br>🔹 Validation:<br>Only @gmail.com emails are allowed.<br>Password must be at least 8 characters..",
+                step2Title: "📝 PERSONAL INFO",
+                step2Content: "1) Enter Full Name<br>2) Provide a valid email<br>3) Enter Phone Number<br>4) Select Gender and Provide Address & City<br>🔹 Validation:<br>Name field only accepts letters.<br>Phone number must be 10 digits.",
+                step3Title: "⚡ FILE COMPLAINT",
+                step3Content: "1) Select Complaint Type<br>2) Describe the Issue in Detail<br>3) Upload an Image/Video (if needed)<br>🔹 Features:<br>Live Character Count (Max: 2000 characters)<br>Image/Video Upload Preview",
+                step4Title: "📍 TRACK COMPLAINT",
+                step4Content: "1) Enter Complaint ID<br>2) Click 'Track Status'<br>3) View Real-Time Updates.<br>🔹 Validation<br>Once a complaint is submitted, users can track its progress.",
+                step5Title: "🎯 FEEDBACK",
+                step5Content: "1) Receive a resolution update<br>2) Rate the response (1-5 stars)<br>3) Provide additional comments<br>4) Submit Feedback",
+            },
+            tamil: {
+                step1Title: "🔑 உள்நுழைவு பக்கம்",
+                step1Content: "1) மின்னஞ்சல் மற்றும் கடவுச்சொல்லை உள்ளிடவும்.<br>2) 'உள்நுழைவு' என்பதை கிளிக் செய்யவும்.<br>3) கணக்கு இல்லை என்றால் 'பதிவு செய்யவும்' என்பதை கிளிக் செய்யவும்.<br>🔹 சரிபார்ப்பு:<br>@gmail.com மின்னஞ்சல்கள் மட்டுமே அனுமதிக்கப்படுகின்றன.கடவுச்சொல் குறைந்தது 8 எழுத்துகளாக இருக்க வேண்டும்.",
+                step2Title: "📝 தனிப்பட்ட தகவல்",
+                step2Content: "1) முழு பெயரை உள்ளிடவும்.<br>2) செல்லுபடியாகும் மின்னஞ்சலை வழங்கவும்.<br>3) தொலைபேசி எண்களை  உள்ளிடவும்.<br>4) பாலினத்தை தேர்ந்தெடுத்து முகவரி மற்றும் நகரம் வழங்கவும்.🔹 சரிபார்ப்பு:பெயர் புலம் மட்டும் எழுத்துக்களை ஏற்றுக்கொள்கிறது.தொலைபேசி எண் 10 இலக்கங்களாக இருக்க வேண்டும்.",
+                step3Title: "⚡ புகார் பதிவு",
+                step3Content: "1) புகார் வகையை தேர்ந்தெடுக்கவும்.<br>2) பிரச்சனையை விரிவாக விளக்கவும்.<br>3) படத்தை/வீடியோவை பதிவேற்றவும் (அவசியமாக இருந்தால்)<br>🔹 அம்சங்கள்:<br>செயல்பட்ட எழுத்து எண்ணிக்கை (அதிகபட்சம்: 2000 எழுத்துகள்)படம்/வீடியோ பதிவேற்ற முன்னோட்டம்",
+                step4Title: "📍 புகார் கண்காணி",
+                step4Content: "1) புகார் ஐடியை உள்ளிடவும்<br>2) 'நிலைமையை கண்காணிக்க' கிளிக் செய்யவும்<br>3) நேரடி அப்டேடுகளை காண்க.<br>🔹 சரிபார்ப்பு<br>ஒரு புகார் தாக்கல் செய்யப்படும் போது, பயனர்கள் அதின் முன்னேற்றத்தை கண்காணிக்க முடியும்.",
+                step5Title: "🎯 மதிப்பீடு",
+                step5Content: "1) தீர்வு மேம்பாட்டை பெறவும்<br>2) பதிலளிப்பை மதிப்பிடவும் (1-5 நட்சத்திரங்கள்)<br>3) கூடுதல் கருத்துக்களை வழங்கவும்<br>4) மதிப்பீட்டை சமர்ப்பிக்கவும்",
+            }
+        };
+
+        function changeLanguage(language) {
+            const selectedContent = content[language];
+            document.getElementById('step1Title').innerHTML = selectedContent.step1Title;
+            document.getElementById('step1Content').innerHTML = selectedContent.step1Content;
+            document.getElementById('step2Title').innerHTML = selectedContent.step2Title;
+            document.getElementById('step2Content').innerHTML = selectedContent.step2Content;
+            document.getElementById('step3Title').innerHTML = selectedContent.step3Title;
+            document.getElementById('step3Content').innerHTML = selectedContent.step3Content;
+            document.getElementById('step4Title').innerHTML = selectedContent.step4Title;
+            document.getElementById('step4Content').innerHTML = selectedContent.step4Content;
+            document.getElementById('step5Title').innerHTML = selectedContent.step5Title;
+            document.getElementById('step5Content').innerHTML = selectedContent.step5Content;
+        }
+    </script>
+
+</body>
+</html>

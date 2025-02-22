@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            background-image: url("https://www.pixground.com/wp-content/uploads/2023/02/Mountain-Lake-Reflection-in-Nature-Scenery-4K-Wallpaper.jpg");
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        h1 {
+            color: white;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards 0.5s;
+        }
+        p {
+            color: black;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards 0.8s;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        <p>Welcome to Smart City Complaint Management, a cutting-edge platform designed to enhance urban living by streamlining the process of reporting and resolving city-related issues. Our mission is to create a seamless communication channel between citizens and municipal authorities, ensuring faster response times and improved service delivery.
+
+            With our user-friendly interface, residents can easily report complaints related to infrastructure, sanitation, traffic management, waste disposal, and other civic concerns. Our system leverages advanced technologies, including AI-driven analytics and real-time tracking, to provide transparent updates on complaint statuses.
+            
+            We are committed to fostering a smarter, more sustainable, and more efficient urban environment where every voice matters. By bridging the gap between citizens and city administrators, we aim to enhance the quality of life and build a future-ready city.
+            
+            Join us in making our cities smarter, cleaner, and more efficient!</p>
+    </div>
+</body>
+</html>

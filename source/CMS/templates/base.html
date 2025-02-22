@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Form</title>
+</head>
+<body>
+    <h2>Submit Your Complaint</h2>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <h3>Personal Information</h3>
+        {{ personal_form.as_p }}
+        
+        <h3>Complaint Details</h3>
+        {{ complaint_form.as_p }}
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

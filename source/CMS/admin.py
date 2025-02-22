@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Complaint, User, Admin
+from .models import User, Admin, Complaints, PersonalInfo
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 
@@ -12,6 +12,7 @@ class CustomUserAdmin(UserAdmin):
     list_filter = ['is_staff', 'is_active']
 
 # Register your models here.
-admin.site.register(Complaint)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Admin)
+admin.site.register(Complaints)
+admin.site.register(PersonalInfo)

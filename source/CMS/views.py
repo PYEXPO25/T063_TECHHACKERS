@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import  ComplaintForm, CustomUserCreationForm
+from .forms import  CustomUserCreationForm, ComplaintForm, PersonalInfoForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
-from .models import User, Admin
-
+from .models import Admin, PersonalInfo
 
 def start(request):
     return render(request, "start.html")
@@ -16,26 +15,25 @@ def home(request):
     return render(request, "home/home.html")
 
 def adminlogin(request):
-
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
 
         try:
-            # Check if user exists
+            # Fetch user from the Admin model
             user = Admin.objects.get(username=username)
 
-            # Check if password matches
-            if user.password == password:  
+            # Check if the password matches the stored password
+            if user.password == password:
                 messages.success(request, "Login Successful!")
-                return redirect("dashboard")  # Redirects to another page
+                return redirect("dashboard/")  # Redirect to the dashboard page
             else:
                 messages.error(request, "Invalid password. Try again.")
 
         except Admin.DoesNotExist:
             messages.error(request, "User does not exist.")
 
-    return render(request,'adminlogin.html')
+    return render(request, 'adminlogin.html')
 
 def userlogin(request):
     if request.method == 'POST':
@@ -76,5 +74,49 @@ def userlogin(request):
     return render(request, 'userlogin.html')
 
 def complaints_view(request):
-    return render(request, 'complaint.html')
+    if request.method == 'POST':
+        personal_form = PersonalInfoForm(request.POST)
+        complaint_form = ComplaintForm(request.POST, request.FILES)
 
+        print("Personal Form Errors:", personal_form.errors)
+        print("Complaint Form Errors:", complaint_form.errors)
+
+        if personal_form.is_valid() and complaint_form.is_valid():
+            email = personal_form.cleaned_data['email']
+            personal_info, created = PersonalInfo.objects.get_or_create(
+                email=email,
+                defaults={
+                    'full_name': personal_form.cleaned_data['full_name'],
+                    'phone': personal_form.cleaned_data['phone'],
+                    'gender': personal_form.cleaned_data['gender'],
+                    'address': personal_form.cleaned_data['address'],
+                }
+            )
+
+            # Create complaint and link it to the user
+            complaint = complaint_form.save(commit=False)
+            complaint.personal_info = personal_info
+            complaint.save()
+
+            print("Complaint Saved:", complaint)  # Debugging
+
+            return redirect('track/')
+
+    else:
+        personal_form = PersonalInfoForm()
+        complaint_form = ComplaintForm()
+
+    return render(request, 'complaintpage.html', {'personal_form': personal_form, 'complaint_form': complaint_form})
+
+def admin_login(request):
+    return render(request,"adminlogin.html")
+
+def submit_complaint(request):
+    return render(request, 'error.html', {'error_message': 'Invalid request'})
+
+def about(request):
+    return render(request,"aboutus.html")
+def contact(request):
+    return render(request, "contactpage.html")
+def track(request):
+    return render(request, 'track.html')
