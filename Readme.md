@@ -69,7 +69,7 @@ List the technologies and tools used in the project. For example:
 
 - *Frontend:* HTML, CSS, JavaScript
 - *Backend:*  Django
-- *Database:* SQL
+- *Database:* Postgre SQL
 - *Other Tools:* Git
 
 
@@ -124,7 +124,7 @@ List the technologies and tools used in the project. For example:
    
 2. Open your browser and navigate to:
    
-      localhost:8000
+      http://127.0.0.1:8000/home/
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -136,13 +136,12 @@ Images to demonstrate the user interface:
 *Example pages:*
 
 1. *Landing Page:*
-   ![Landing Page Mockup](media/LoadingPage.png)
+   [front page](https://github.com/user-attachments/assets/34fd4dba-1899-44dc-aba6-8063b28e7f4e)
 
-2. *Dashboard:*
-   ![Dashboard Mockup](media/DashBoard.png)
+2. *Analytics View:*
+   ![data](https://github.com/user-attachments/assets/7ca1eecc-2822-4adf-909d-313d2169ddf9)
+   
 
-3. *Analytics View:*
-   ![Analytics Mockup](media/Analytics.png)
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -150,13 +149,13 @@ Images to demonstrate the user interface:
 ## Resources
 
 ### 📄 PowerPoint Presentation
-[Click here to view the PPT](insert-drive-link-here)
+[Click here to view the PPT](https://1drv.ms/p/c/54bcca67381e87ed/EY4S503Om7hJuCK68f9RyV8BcsvB4yLysoupxjKBWp6o_w?e=JsOEzL)
 
 ### 🎥 Project Video
-[Click here to view the project demo video](insert-drive-link-here)
+[Click here to view the project demo video](https://drive.google.com/file/d/1U_gOUOCwsqraNPF2ki2WBRQ23TlhuL_y/view?usp=sharing)
 
 ### 📹 YouTube Link
-[Watch the project on YouTube](insert-youtube-link-here)
+[Watch the project on YouTube](https://youtube.com/watch?v=2oOjp08BB0w&feature=shared)
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
